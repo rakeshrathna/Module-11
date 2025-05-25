@@ -34,9 +34,58 @@ To write a Python program that:
 ---
 
 ## 💻 Program
-Add Code here
+```
+class Nodeq:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+        self.prev = None
 
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+
+    def insert_beginning(self, data):
+        new_node = Nodeq(data)
+        if self.head is None:
+            self.head = new_node
+            return
+        new_node.next = self.head
+        self.head.prev = new_node
+        self.head = new_node
+
+    def insert_end(self, data):
+        new_node = Nodeq(data)
+        if self.head is None:
+            self.head = new_node
+            return
+        n = self.head
+        while n.next:
+            n = n.next
+        n.next = new_node
+        new_node.prev = n
+
+    def search(self, data):
+        n = self.head
+        while n:
+            if n.data == data:
+                return True
+            n = n.next
+        return False
+
+# Example usage
+dll = DoublyLinkedList()
+dll.insert_beginning(10)
+dll.insert_end(20)
+dll.insert_beginning(5)
+dll.insert_end(30)
+
+print("Search 20:", dll.search(20))  # True
+print("Search 40:", dll.search(40))  # False
+```
 ## Sample Output
 
-## Result
+![446553072-2fe6ae2f-f63f-40bd-99aa-484ddc708ee9](https://github.com/user-attachments/assets/05180204-18e4-4faf-9f62-021258dc7dee)
 
+## Result
+Thus, the program is executed successfully
